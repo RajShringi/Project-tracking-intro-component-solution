@@ -1,0 +1,223 @@
+@import "config";
+@import "utilities";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: $primary-font;
+  text-transform: uppercase;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.blob {
+  width: 50vw;
+  height: 50vh;
+  background: $lightGrayishBlue;
+  border-bottom-left-radius: 50px;
+  position: absolute;
+  right: 0;
+  z-index: -100;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+
+  // nav-menu
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav-item {
+      margin-left: 3em;
+
+      .nav-link {
+        color: $veryDarkBlue;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 1rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &:last-child {
+        .nav-link {
+          color: $grayishBlue;
+        }
+      }
+    }
+
+    .dot-line {
+      width: 5px;
+      height: 5px;
+      background: $grayishBlue;
+      border-radius: 50%;
+    }
+  }
+
+  // hamburger
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+}
+
+.bg {
+  background: url("../images/illustration-devices.svg");
+  width: 50%;
+  position: absolute;
+  top: 10em;
+  right: 0px;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.hero {
+  display: flex;
+  padding: 1em;
+  margin: 5em 0;
+  p {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: $grayishBlue;
+    .highlight {
+      background: $veryDarkBlue;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      padding: 0.15em 0.5em;
+      border-radius: 50px;
+      margin-right: 0.5em;
+    }
+  }
+
+  .hero-heading {
+    line-height: 1;
+    margin: 0.5em 0;
+    font-size: 4rem;
+    color: $veryDarkBlue;
+  }
+
+  .hero-description {
+    text-transform: initial;
+    font-family: $secondary-font;
+    color: $darkGrayishBlue;
+    letter-spacing: 0;
+    margin-bottom: 4em;
+    font-size: 1.1rem;
+  }
+
+  .schedule {
+    display: flex;
+    align-items: center;
+
+    a {
+      color: #fff;
+      background: $Red;
+      padding: 0.5em 1.5em;
+      border-radius: 5px;
+      font-weight: bold;
+
+      &:hover {
+        background: lighten($color: $Red, $amount: 10%);
+      }
+    }
+
+    p {
+      margin-left: 3em;
+      letter-spacing: 3px;
+    }
+  }
+}
+
+@media only screen and (max-width: 748px) {
+  .navbar {
+    .nav-menu {
+      position: fixed;
+      top: 5em;
+      left: -105%;
+      flex-direction: column;
+      width: 85%;
+      transition: 300ms;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      margin: 0 auto;
+      background: #fff;
+
+      .nav-item {
+        margin: 0.5em 0;
+      }
+
+      .dot-line {
+        border-radius: initial;
+        width: 80%;
+        height: 0.5px;
+      }
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+
+  .bg {
+    width: 95%;
+    background-size: 500px;
+    top: 8em;
+    z-index: -2;
+  }
+
+  .hero {
+    height: 550px;
+    align-items: flex-end;
+    margin-top: 10em;
+
+    p {
+      font-size: 0.9rem;
+      letter-spacing: 5px;
+    }
+
+    .hero-heading {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      margin-bottom: 2em;
+    }
+
+    .schedule {
+      a {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.nav-menu.active {
+  left: 7%;
+}
